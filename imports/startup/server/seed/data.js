@@ -42,7 +42,7 @@ let data = [{
 }
 ];
 
-let checkProducts = Products.find({}).count();
+//let checkProducts = Products.find({}).count();
 
 //console.warn('checkProducts ', checkProducts);
 

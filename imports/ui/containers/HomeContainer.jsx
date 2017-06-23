@@ -8,6 +8,8 @@ export default createContainer((props) => {
   let selector = {};
 
   const products = Products.find(selector).fetch();
+  //console.warn('productSub ', products);
+
   return {
     products: products,
     loading: !productSub.ready()
