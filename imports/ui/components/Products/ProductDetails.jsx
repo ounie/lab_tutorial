@@ -4,7 +4,11 @@ import accounting from 'accounting';
 export default class ProductDetails extends Component {
   render() {
     let product = this.props.product;
-    let flavorList = product.flavors.map(function(flavor, i){
+    let flavors = [];
+    if(product.flavors){
+      flavors = product.flavors;
+    }
+    let flavorList = flavors.map(function(flavor, i){
         return <span key={i}>{flavor} </span>
     });
 
