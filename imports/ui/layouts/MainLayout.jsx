@@ -5,13 +5,17 @@ import Header from './Header.jsx';
 export default class MainLayout extends Component {
 
   render() {
-    return (
-      <div>
-        <Header />
-        {this.props.children}
-        {/* <Footer /> */}
-      </div>
-    );
+    if(this.props.loading){
+      return (<div>loading...</div>)
+    } else {
+      return (
+        <div>
+          <Header {...this.props}/>
+          {this.props.children}
+          {/* <Footer /> */}
+        </div>
+      );
+    }
   }
 }
 

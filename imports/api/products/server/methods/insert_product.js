@@ -6,6 +6,8 @@ Meteor.methods({
     insertProduct: function(product) {
     console.warn('product ', product);
 
+    product.user_id = this.userId;
+
     let productId = Products.insert(product);
 
     if(productId) {
