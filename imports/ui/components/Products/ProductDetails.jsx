@@ -1,9 +1,13 @@
 import React, {Component} from 'react';
 import accounting from 'accounting';
+import AddReview from '../Reviews/AddReview.jsx';
+import ProductReviews from '../Reviews/ProductReviews.jsx';
 
 export default class ProductDetails extends Component {
+
   render() {
-    let product = this.props.product;
+    let {product, reviews} = this.props;
+
     let flavors = [];
     if(product.flavors){
       flavors = product.flavors;
@@ -30,6 +34,10 @@ export default class ProductDetails extends Component {
             <button className="btn btn-primary">Add To Cart</button>
           </div>
         </div>
+        <div className="text-center">
+        <AddReview product={product}/>
+        <ProductReviews reviews={reviews} />
+      </div>
       </div>
     )
   }
