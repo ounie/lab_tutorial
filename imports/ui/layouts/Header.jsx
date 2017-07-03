@@ -15,6 +15,7 @@ export default class Header extends Component {
         <div className="col-sm-8">
           <ul className="nav nav-tabs">
             <li  className="active red"><Link to="/" className = "red">Home</Link></li>
+            <li ><Link to="/drops">Mass Drops</Link></li>
             <li ><Link to="/signup">SignUp</Link></li>
             <li ><Link to="/signin">SignIn</Link></li>
           </ul>
