@@ -16,6 +16,7 @@
     "region" : "USA",
     "weight" : 5.5,
     "org_price": 30.00,
+    "current_price": 30.00,
     "tiers" : [
     {"id": 0, "participants": 0, "price": 30.00},
     {"id": 1, "participants": 10, "price": 25.00},
