@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router';
-export default class DropGrid extends Component {
+
+export default class DropDetail extends Component {
   render() {
     //find out current tier
     //get needed participants from tier participants - current participants
@@ -29,9 +30,9 @@ export default class DropGrid extends Component {
           :<span > ${product.org_price} </span> }
           <div>{nextTier ? <span>{needParticipants} more people needed for this price ${nextPrice}</span>
           : <span></span>}</div>
-          <Link to={'/drop/' + product.product_id}>
-            <button className="btn btn-primary text-center">View Drop</button>
-          </Link>
+          {/* <Link to={'/drops/' + product.product_id}> */}
+            <button onClick={addParticipant} className="btn btn-primary text-center">Participate Now</button>
+          {/* </Link> */}
         </div>
       </div>
     )
