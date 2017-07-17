@@ -1,13 +1,26 @@
 import { Meteor } from 'meteor/meteor';
 import React, {Component} from 'react';
 import { Link, browserHistory } from 'react-router';
+import { connect }  from 'react-redux';
+import setCatalogType from '/imports/ui/redux/actions/Catalog/setCatalogType.js';
 
-export default class Header extends Component {
+class Header extends Component {
   render() {
-    let {currentUser, isLoggedIn} = this.props;
+    let {currentUser, isLoggedIn, catalogType, dispatch} = this.props;
 
     let logOut = () => {
       Meteor.logout(function(error, result){});
+    }
+
+    //console.warn('catalogType ', catalogType);
+
+    let changePrice = () => {
+      if(catalogType === 'retail'){
+        dispatch(setCatalogType('wholesale'));
+      } else {
+        dispatch(setCatalogType('retail'));
+      }
+
     }
 
     return (
@@ -21,6 +34,9 @@ export default class Header extends Component {
           </ul>
         </div>
         <div className="col-sm-4" style={{textAlign: 'right'}}>
+          <span style={{paddingRight: "20px"}}>
+            <button className="btn btn-default" onClick={changePrice}>{catalogType === 'retail' ? 'Get Wholesale Price' : 'Get Retail Price'}</button>
+          </span>
           {isLoggedIn ?
             <span>{currentUser.profile.name} <button onClick={logOut} className="btn btn-danger">Logout</button></span>
           : <Link to="/signin" className="btn btn-success">Login</Link>
@@ -30,3 +46,11 @@ export default class Header extends Component {
     )
   }
 }
+
+function mapStateToProps(state) {
+  return {
+    catalogType: state.catalogType
+  };
+}
+
+export default connect(mapStateToProps)(Header);

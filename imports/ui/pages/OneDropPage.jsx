@@ -10,7 +10,7 @@ export default class OneDropPage extends Component {
             return (
                 <div>
                     <div className="container">
-                        <DropDetail key={product._id} product={product}/>
+                        <DropDetail product={product}/>
                     </div>
                 </div>
             )

@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router';
+import DropProgressBar from './DropProgressBar.jsx';
+import DropProgressCircle from './DropProgressCircle.jsx';
 
 export default class DropDetail extends Component {
   render() {
@@ -22,17 +24,22 @@ export default class DropDetail extends Component {
       Meteor.call("addParticipant", product._id);
     }
     return (
-      <div className="col-sm-4">
-        <img className="img-responsive"   src={product.images[0]}/>
-        <h2 className="text-center"> {product.name_name}  </h2>
-        <div className="text-center">
-          {product.cur_tier.price < product.org_price ? <span><s>${product.org_price}</s><span>  ${product.cur_tier.price}</span></span>
-          :<span > ${product.org_price} </span> }
-          <div>{nextTier ? <span>{needParticipants} more people needed for this price ${nextPrice}</span>
-          : <span></span>}</div>
-          {/* <Link to={'/drops/' + product.product_id}> */}
-            <button onClick={addParticipant} className="btn btn-primary text-center">Participate Now</button>
-          {/* </Link> */}
+      <div className="col-sm-12">
+        <h1 className="text-center">{product.product_name}</h1>
+        <div className="row">
+          <div className="col-sm-8">
+            <img className="img-responsive"  src={product.images[0]}/>
+              <DropProgressBar />
+          </div>
+          <div className="col-sm-4">
+            <div className="text-center">
+              {product.cur_tier.price < product.org_price ? <span><s>${product.org_price}</s><span>  ${product.cur_tier.price}</span></span>
+              :<span > ${product.org_price} </span> }
+              <div>{nextTier ? <span>{needParticipants} more people needed for this price ${nextPrice}</span>
+              : <span></span>}</div>
+                <button onClick={addParticipant} className="btn btn-primary text-center">Participate Now</button>
+            </div>
+          </div>
         </div>
       </div>
     )

@@ -6,14 +6,15 @@ export default class HomePage extends Component {
         if (this.props.loading) {
             return <div>loading...</div>;
         } else {
-          let products = this.props.products;
+          let {products, catalogType} = this.props;
 
           let productsList = products.map(function(product){
-              return <ProductGrid key={product._id} product={product}/>
+              return <ProductGrid key={product._id} product={product} catalogType={catalogType}/>
           });
 
             return (
                 <div>
+                  <h1 className="text-center">{catalogType === 'retail' ? 'Retail Price' : 'Wholesale Price'}</h1>
                     <div className="container">
                         {productsList}
                     </div>

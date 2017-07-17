@@ -23,7 +23,7 @@ export default class DropGrid extends Component {
     return (
       <div className="col-sm-4">
         <img className="img-responsive"   src={product.images[0]}/>
-        <h2 className="text-center"> {product.name_name}  </h2>
+        <h2 className="text-center"> {product.product_name}  </h2>
         <div className="text-center">
           {product.cur_tier.price < product.org_price ? <span><s>${product.org_price}</s><span>  ${product.cur_tier.price}</span></span>
           :<span > ${product.org_price} </span> }
